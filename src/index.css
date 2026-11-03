@@ -576,16 +576,32 @@ input:focus-visible {
   box-shadow: 0 0 18px rgba(139, 92, 246, 0.25);
 }
 
-/* 13. RATINGS */
 
 .stars {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 9px;
 }
 
-.star {
-  color: #55516f;
+.stars .star {
+  appearance: none;
+  -webkit-appearance: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  color: #625d7d;
+  font-size: 2rem;
+  line-height: 1;
 
   cursor: pointer;
 
@@ -595,11 +611,33 @@ input:focus-visible {
     filter 0.2s ease;
 }
 
-.star:hover {
+.stars .star.on {
   color: #fbbf24;
-  transform: scale(1.25);
-  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.55));
 }
+
+
+.stars .star:hover {
+  color: #fde68a;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.75));
+}
+
+.stars .star:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+
+/* Prevent the general button active animation */
+.stars .star:active {
+  transform: scale(0.95);
+}
+
 
 /* 14. TRACK LIST */
 
@@ -1063,3 +1101,452 @@ a:hover {
   }
 }
 
+
+/* =========================================
+   COSMIC NAVIGATION BUTTONS
+   ========================================= */
+
+.navbar {
+  min-height: 75px;
+  padding: 14px 6%;
+}
+
+/* Navigation links */
+.navbar a,
+.navbar button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 11px 20px;
+
+  color: #aaa5c7;
+  background: rgba(24, 21, 53, 0.55);
+
+  border: 1px solid rgba(167, 139, 250, 0.12);
+  border-radius: 12px;
+
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Hover effect */
+.navbar a:hover,
+.navbar button:hover {
+  color: white;
+
+  background: rgba(139, 92, 246, 0.16);
+
+  border-color: rgba(167, 139, 250, 0.5);
+
+  box-shadow:
+    0 0 15px rgba(139, 92, 246, 0.15),
+    inset 0 0 12px rgba(139, 92, 246, 0.06);
+
+  transform: translateY(-2px);
+}
+
+/* Active navigation page */
+.navbar a.active,
+.navbar button.active {
+  color: white;
+
+  background: linear-gradient(
+    120deg,
+    rgba(139, 92, 246, 0.85),
+    rgba(99, 102, 241, 0.8),
+    rgba(56, 189, 248, 0.65)
+  );
+
+  border-color: rgba(196, 181, 253, 0.5);
+
+  box-shadow:
+    0 4px 20px rgba(139, 92, 246, 0.25),
+    0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+/* Active hover */
+.navbar a.active:hover,
+.navbar button.active:hover {
+  filter: brightness(1.15);
+
+  box-shadow:
+    0 6px 25px rgba(139, 92, 246, 0.4);
+
+  transform: translateY(-2px);
+}
+
+/* Keyboard accessibility */
+.navbar a:focus-visible,
+.navbar button:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 4px;
+}
+
+/* Collection count emphasis */
+.navbar a span,
+.navbar button span {
+  transition: color 0.3s ease;
+}
+
+/* Mobile navigation */
+@media (max-width: 600px) {
+  .navbar {
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .navbar a,
+  .navbar button {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+
+/* =========================================
+   ALBUM DETAIL — SPACING AND LAYOUT FIX
+   ========================================= */
+
+/* Organize the album information beside the artwork */
+.detail-head {
+  align-items: flex-start;
+  gap: 35px;
+  padding: 30px;
+}
+
+/* Give the information its own vertical layout */
+.detail-head > div {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Album title */
+.detail-head .page-title {
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Artist name */
+.detail-head .detail-artist {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Release date, genre and track count */
+.detail-head .card-meta {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Streaming platform links */
+.where {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-top: 5px;
+  padding: 14px 0;
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+
+  width: 100%;
+}
+
+/* "Listen on" label */
+.where > span {
+  color: var(--muted);
+  margin-right: 5px;
+}
+
+/* Individual streaming links */
+.where a {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 9px 15px;
+
+  color: #ddd6fe;
+  text-decoration: none;
+
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  transition: all 0.25s ease;
+}
+
+.where a:hover {
+  color: white;
+  background: rgba(139, 92, 246, 0.3);
+  border-color: var(--purple);
+  transform: translateY(-2px);
+}
+
+/* Listening status, rating, notes and removal */
+.tracker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+
+  width: 100%;
+  margin-top: 5px;
+  padding: 22px;
+
+  background: rgba(19, 19, 44, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+/* Notes field */
+.tracker textarea {
+  display: block;
+  width: 100%;
+  min-height: 95px;
+  resize: vertical;
+
+  line-height: 1.6;
+}
+
+/* Remove button */
+.tracker .danger {
+  margin-top: 3px;
+  color: #fda4af;
+  background: rgba(190, 18, 60, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.tracker .danger:hover {
+  background: rgba(190, 18, 60, 0.25);
+  border-color: rgba(244, 63, 94, 0.6);
+}
+
+/* Album artwork */
+.detail-head > img {
+  flex-shrink: 0;
+  width: 220px;
+  max-width: 35%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+  .detail-head {
+    gap: 22px;
+    padding: 20px;
+  }
+
+  .detail-head > div {
+    width: 100%;
+    gap: 13px;
+  }
+
+  .detail-head > img {
+    width: 170px;
+    max-width: 100%;
+  }
+
+  .where {
+    gap: 9px;
+  }
+
+  .where a {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .tracker {
+    padding: 17px;
+    gap: 15px;
+  }
+}
+
+
+/* =========================================
+   STAR RATING REDESIGN
+   ========================================= */
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.stars .star {
+  appearance: none;
+  -webkit-appearance: none;
+
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  color: #625d7d;
+  font-size: 2rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+/* Selected stars */
+.stars .star.active {
+  color: #fbbf24;
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
+}
+
+/* Hover effect */
+.stars .star:hover {
+  color: #fcd34d;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 9px rgba(251, 191, 36, 0.7));
+}
+
+/* Keyboard focus without a white box */
+.stars .star:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+
+/* Remove the general button hover effect */
+.stars .star:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+
+/* COLLECTION SEARCH INPUT */
+.filters input[placeholder="Filter by title or artist"] {
+  width: 100%;
+  min-width: 200px;
+  padding: 13px 17px;
+  margin-bottom: 15px;
+
+  color: var(--text);
+  background: rgba(17, 17, 38, 0.85);
+
+  border: 1px solid rgba(183, 157, 255, 0.2);
+  border-radius: 12px;
+  outline: none;
+
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              background 0.25s ease;
+}
+
+.filters input[placeholder="Filter by title or artist"]::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.filters input[placeholder="Filter by title or artist"]:hover {
+  border-color: rgba(167, 139, 250, 0.5);
+  background: rgba(25, 25, 51, 0.95);
+}
+
+.filters input[placeholder="Filter by title or artist"]:focus {
+  border-color: var(--purple);
+  background: rgba(25, 25, 51, 0.98);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15),
+              0 0 18px rgba(139, 92, 246, 0.2);
+}
+
+
+/* FIX DARK TEXT INSIDE ALBUM AND SONG CARDS */
+
+/* Album titles */
+.album-card,
+.album-card .card-title {
+  color: var(--text);
+}
+
+/* Artist names */
+.album-card .card-artist {
+  color: var(--muted);
+}
+
+/* Album metadata */
+.album-card .card-meta {
+  color: #b9a8ed;
+}
+
+/* Song and track information */
+.track,
+.track *,
+.track button {
+  color: var(--text);
+}
+
+/* Make secondary text inside track cards softer */
+.track .card-artist,
+.track .card-meta {
+  color: var(--muted);
+}
+
+/* Prevent browser default black text on card buttons */
+.album-card,
+.track button {
+  color: var(--text);
+}
+
+
+/* SPACE BETWEEN ALBUM ARTWORK AND CARD TEXT */
+
+.album-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Keep the artwork grouped together */
+.album-card .sleeve {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* Add a little breathing room between text elements */
+.album-card .card-title {
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.album-card .card-artist {
+  line-height: 1.4;
+}
+
+.album-card .card-meta {
+  margin-top: 2px;
+  line-height: 1.4;
+}

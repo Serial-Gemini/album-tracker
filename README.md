@@ -8,10 +8,11 @@ This is an Album Tracker. A React Web Application thath allows users to discover
 
 Live Website - https://gemini-albumtracker.vercel.app/
 Github Repo - https://github.com/Serial-Gemini/album-tracker
-![Search results screenshot](./searchresults.png)
+![Search results screenshot](./mysearchresults.png)
 ![Album detail screenshot](./albumdetailss.png)
 ![Recommendations Loading screenshot](./recommendationsloading.png)
 ![Recommendations Loaded screenshot](./recommendationsloaded.png)
+![Laboratory 8 Answers](./Lescano_Lab8_Answers.pdf)
 
 ## Features
 

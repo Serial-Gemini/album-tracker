@@ -13,7 +13,7 @@ export function PlayerProvider({ children }) {
   const [progress, setProgress] = useState(0);
   const current = queue[index] ?? null;
 
-  // Load and play whenever the current track changes
+ 
 useEffect(() => {
   if (!current) return;
 
@@ -35,7 +35,7 @@ useEffect(() => {
   });
 }, [current]);
 
-  // Wire up audio events
+ 
   useEffect(() => {
     const audio = audioRef.current;
     const onTime = () =>

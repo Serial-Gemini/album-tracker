@@ -10,7 +10,7 @@ async function request(url) {
   return res.json();
 }
 
-// Replace the small artwork size with a larger size.
+
 export const bigArt = (url = "", size = 400) =>
   url.replace(/\d+x\d+bb/, `${size}x${size}bb`);
 

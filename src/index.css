@@ -1,10 +1,7 @@
 
-/* =========================================
-   ALBUM TRACKER — COSMIC THEME
-   File: src/index.css
-   ========================================= */
 
-/* 1. GLOBAL VARIABLES */
+
+
 
 :root {
   font-family: Inter, "Segoe UI", sans-serif;
@@ -39,7 +36,7 @@
   --glow: 0 0 25px rgba(139, 92, 246, 0.25);
 }
 
-/* 2. RESET AND PAGE BACKGROUND */
+
 
 * {
   box-sizing: border-box;
@@ -109,7 +106,7 @@ body::before {
   color: white;
 }
 
-/* 3. SCROLLBAR */
+
 
 ::-webkit-scrollbar {
   width: 9px;
@@ -131,7 +128,7 @@ body::before {
   background: #c4b5fd;
 }
 
-/* 4. NAVIGATION BAR */
+
 
 .navbar {
   position: sticky;
@@ -173,7 +170,7 @@ body::before {
   color: var(--purple);
 }
 
-/* 5. MAIN PAGE */
+
 
 .page {
   width: min(1200px, 90%);
@@ -207,7 +204,7 @@ body::before {
   line-height: 1.7;
 }
 
-/* 6. ALBUM GRID */
+
 
 .grid {
   display: grid;
@@ -220,7 +217,7 @@ body::before {
   margin-top: 30px;
 }
 
-/* 7. ALBUM CARDS */
+
 
 .album-card {
   position: relative;
@@ -284,7 +281,7 @@ body::before {
   font-size: 0.9rem;
 }
 
-/* Album artwork decorative elements */
+
 
 .sleeve {
   position: relative;
@@ -305,7 +302,7 @@ body::before {
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
-/* 8. SEARCH */
+
 
 .search {
   width: 100%;
@@ -343,7 +340,7 @@ body::before {
     0 0 25px rgba(139, 92, 246, 0.18);
 }
 
-/* General form controls */
+
 
 input,
 textarea,
@@ -373,7 +370,7 @@ textarea:focus {
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.18);
 }
 
-/* 9. BUTTONS */
+
 
 button,
 .primary,
@@ -457,7 +454,7 @@ input:focus-visible {
   outline-offset: 4px;
 }
 
-/* 10. NOTICES AND ERRORS */
+
 
 .notice,
 .error {
@@ -478,7 +475,7 @@ input:focus-visible {
   color: #fda4af;
 }
 
-/* 11. ALBUM DETAILS */
+
 
 .detail-head {
   display: flex;
@@ -527,7 +524,7 @@ input:focus-visible {
   font-size: 0.9rem;
 }
 
-/* 12. COLLECTION AND TRACKING */
+
 
 .tracker {
   padding: 20px;
@@ -633,13 +630,13 @@ input:focus-visible {
   border-radius: 4px;
 }
 
-/* Prevent the general button active animation */
+
 .stars .star:active {
   transform: scale(0.95);
 }
 
 
-/* 14. TRACK LIST */
+
 
 .tracks {
   list-style: none;
@@ -707,7 +704,7 @@ input:focus-visible {
   font-size: 0.85rem;
 }
 
-/* 15. DEEZER CALLOUT */
+
 
 .deezer-callout {
   padding: 20px;
@@ -729,7 +726,7 @@ input:focus-visible {
   margin-top: 15px;
 }
 
-/* 16. FLOATING MUSIC PLAYER */
+
 
 .player {
   position: fixed;
@@ -833,7 +830,7 @@ input:focus-visible {
   transform: scale(1.1);
 }
 
-/* Music progress bar */
+
 
 .seek {
   width: 140px;
@@ -843,7 +840,7 @@ input:focus-visible {
   cursor: pointer;
 }
 
-/* 17. GENERAL HOVER POLISH */
+
 
 img {
   max-width: 100%;
@@ -857,7 +854,7 @@ a:hover {
   color: var(--blue);
 }
 
-/* 18. ANIMATIONS */
+
 
 @keyframes pageEnter {
   from {
@@ -893,7 +890,7 @@ a:hover {
   }
 }
 
-/* 19. RESPONSIVE DESIGN */
+
 
 @media (max-width: 700px) {
   .navbar {
@@ -966,7 +963,7 @@ a:hover {
   }
 }
 
-/* 20. ACCESSIBILITY */
+
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -980,11 +977,9 @@ a:hover {
 }
 
 
-/* =========================================
-   COSMIC SEARCH BAR REDESIGN
-   ========================================= */
 
-/* Search container */
+
+
 .search {
   display: flex;
   align-items: center;
@@ -1012,7 +1007,7 @@ a:hover {
     0 0 25px rgba(139, 92, 246, 0.2);
 }
 
-/* Actual text input inside search */
+
 .search input,
 .search input[type="text"],
 .search input[type="search"] {
@@ -1044,7 +1039,7 @@ a:hover {
   box-shadow: none;
 }
 
-/* Search button */
+
 .search button {
   padding: 13px 22px;
 
@@ -1085,7 +1080,7 @@ a:hover {
   transform: scale(0.96);
 }
 
-/* Mobile search layout */
+
 @media (max-width: 500px) {
   .search {
     gap: 6px;
@@ -1102,16 +1097,14 @@ a:hover {
 }
 
 
-/* =========================================
-   COSMIC NAVIGATION BUTTONS
-   ========================================= */
+
 
 .navbar {
   min-height: 75px;
   padding: 14px 6%;
 }
 
-/* Navigation links */
+
 .navbar a,
 .navbar button {
   position: relative;
@@ -1143,7 +1136,7 @@ a:hover {
     transform 0.3s ease;
 }
 
-/* Hover effect */
+
 .navbar a:hover,
 .navbar button:hover {
   color: white;
@@ -1159,7 +1152,7 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* Active navigation page */
+
 .navbar a.active,
 .navbar button.active {
   color: white;
@@ -1178,7 +1171,7 @@ a:hover {
     0 0 15px rgba(56, 189, 248, 0.1);
 }
 
-/* Active hover */
+
 .navbar a.active:hover,
 .navbar button.active:hover {
   filter: brightness(1.15);
@@ -1189,20 +1182,20 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* Keyboard accessibility */
+
 .navbar a:focus-visible,
 .navbar button:focus-visible {
   outline: 2px solid #a78bfa;
   outline-offset: 4px;
 }
 
-/* Collection count emphasis */
+
 .navbar a span,
 .navbar button span {
   transition: color 0.3s ease;
 }
 
-/* Mobile navigation */
+
 @media (max-width: 600px) {
   .navbar {
     gap: 10px;
@@ -1217,18 +1210,16 @@ a:hover {
 }
 
 
-/* =========================================
-   ALBUM DETAIL — SPACING AND LAYOUT FIX
-   ========================================= */
 
-/* Organize the album information beside the artwork */
+
+
 .detail-head {
   align-items: flex-start;
   gap: 35px;
   padding: 30px;
 }
 
-/* Give the information its own vertical layout */
+
 .detail-head > div {
   flex: 1;
   min-width: 0;
@@ -1239,25 +1230,25 @@ a:hover {
   gap: 16px;
 }
 
-/* Album title */
+
 .detail-head .page-title {
   margin: 0;
   line-height: 1.2;
 }
 
-/* Artist name */
+
 .detail-head .detail-artist {
   margin: 0;
   font-size: 1.1rem;
 }
 
-/* Release date, genre and track count */
+
 .detail-head .card-meta {
   margin: 0;
   line-height: 1.6;
 }
 
-/* Streaming platform links */
+
 .where {
   display: flex;
   align-items: center;
@@ -1273,13 +1264,13 @@ a:hover {
   width: 100%;
 }
 
-/* "Listen on" label */
+
 .where > span {
   color: var(--muted);
   margin-right: 5px;
 }
 
-/* Individual streaming links */
+
 .where a {
   display: inline-flex;
   align-items: center;
@@ -1303,7 +1294,7 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* Listening status, rating, notes and removal */
+
 .tracker {
   display: flex;
   flex-direction: column;
@@ -1319,7 +1310,7 @@ a:hover {
   border-radius: 15px;
 }
 
-/* Notes field */
+
 .tracker textarea {
   display: block;
   width: 100%;
@@ -1329,7 +1320,7 @@ a:hover {
   line-height: 1.6;
 }
 
-/* Remove button */
+
 .tracker .danger {
   margin-top: 3px;
   color: #fda4af;
@@ -1342,7 +1333,7 @@ a:hover {
   border-color: rgba(244, 63, 94, 0.6);
 }
 
-/* Album artwork */
+
 .detail-head > img {
   flex-shrink: 0;
   width: 220px;
@@ -1351,7 +1342,7 @@ a:hover {
   object-fit: cover;
 }
 
-/* Mobile layout */
+
 @media (max-width: 700px) {
   .detail-head {
     gap: 22px;
@@ -1384,9 +1375,7 @@ a:hover {
 }
 
 
-/* =========================================
-   STAR RATING REDESIGN
-   ========================================= */
+
 
 .stars {
   display: flex;
@@ -1418,34 +1407,34 @@ a:hover {
     filter 0.2s ease;
 }
 
-/* Selected stars */
+
 .stars .star.active {
   color: #fbbf24;
   filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
 }
 
-/* Hover effect */
+
 .stars .star:hover {
   color: #fcd34d;
   transform: scale(1.2);
   filter: drop-shadow(0 0 9px rgba(251, 191, 36, 0.7));
 }
 
-/* Keyboard focus without a white box */
+
 .stars .star:focus-visible {
   outline: 2px solid var(--purple);
   outline-offset: 4px;
   border-radius: 5px;
 }
 
-/* Remove the general button hover effect */
+
 .stars .star:hover {
   background: transparent;
   box-shadow: none;
 }
 
 
-/* COLLECTION SEARCH INPUT */
+
 .filters input[placeholder="Filter by title or artist"] {
   width: 100%;
   min-width: 200px;
@@ -1483,45 +1472,45 @@ a:hover {
 }
 
 
-/* FIX DARK TEXT INSIDE ALBUM AND SONG CARDS */
 
-/* Album titles */
+
+
 .album-card,
 .album-card .card-title {
   color: var(--text);
 }
 
-/* Artist names */
+
 .album-card .card-artist {
   color: var(--muted);
 }
 
-/* Album metadata */
+
 .album-card .card-meta {
   color: #b9a8ed;
 }
 
-/* Song and track information */
+
 .track,
 .track *,
 .track button {
   color: var(--text);
 }
 
-/* Make secondary text inside track cards softer */
+
 .track .card-artist,
 .track .card-meta {
   color: var(--muted);
 }
 
-/* Prevent browser default black text on card buttons */
+
 .album-card,
 .track button {
   color: var(--text);
 }
 
 
-/* SPACE BETWEEN ALBUM ARTWORK AND CARD TEXT */
+
 
 .album-card {
   display: flex;
@@ -1530,13 +1519,13 @@ a:hover {
   gap: 8px;
 }
 
-/* Keep the artwork grouped together */
+
 .album-card .sleeve {
   width: 100%;
   margin-bottom: 8px;
 }
 
-/* Add a little breathing room between text elements */
+
 .album-card .card-title {
   margin-top: 2px;
   line-height: 1.4;
@@ -1551,9 +1540,375 @@ a:hover {
   line-height: 1.4;
 }
 
-/* NAVIGATION BUTTON SPACING */
+
 .navbar nav {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f2fc;
+  --surface: #ffffff;
+  --surface-light: #eeeafd;
+  --border: rgba(109, 75, 180, 0.18);
+
+  --text: #29213d;
+  --muted: #77718c;
+
+  --purple: #8054d6;
+  --violet: #7043ce;
+  --blue: #2585c5;
+  --pink: #d94691;
+
+  --gradient: linear-gradient(
+    120deg,
+    #8054d6,
+    #6366d9,
+    #38a5dc
+  );
+
+  --glow: 0 0 20px rgba(139, 92, 246, 0.12);
+}
+
+/* Main background */
+
+:root[data-theme="light"] body {
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      ellipse at 15% 10%,
+      rgba(196, 181, 253, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 85% 35%,
+      rgba(147, 197, 253, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(216, 180, 254, 0.25),
+      transparent 45%
+    ),
+    var(--bg);
+}
+
+:root[data-theme="light"] body::before {
+  opacity: 0.08;
+  filter: invert(1);
+}
+
+/* Scrollbar */
+
+:root[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #eeebf7;
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(#a78bfa, #60a5fa);
+}
+
+/* Navigation */
+
+:root[data-theme="light"] .navbar {
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid var(--border);
+}
+
+:root[data-theme="light"] .navbar a,
+:root[data-theme="light"] .navbar button {
+  color: #6e6684;
+  background: rgba(238, 234, 250, 0.75);
+  border-color: rgba(109, 75, 180, 0.12);
+}
+
+:root[data-theme="light"] .navbar a:hover,
+:root[data-theme="light"] .navbar button:hover {
+  color: #5632a0;
+  background: rgba(196, 181, 253, 0.3);
+  border-color: rgba(128, 84, 214, 0.4);
+}
+
+:root[data-theme="light"] .navbar a.active,
+:root[data-theme="light"] .navbar button.active {
+  color: white;
+  background: var(--gradient);
+  border-color: transparent;
+}
+
+/* Logo */
+
+:root[data-theme="light"] .logo {
+  color: #5632a0;
+}
+
+/* Page title */
+
+:root[data-theme="light"] .page-title {
+  background: linear-gradient(
+    110deg,
+    #51318f,
+    #8054d6,
+    #2585c5
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Album cards */
+
+:root[data-theme="light"] .album-card {
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #f0edfa
+  );
+
+  border-color: rgba(109, 75, 180, 0.16);
+
+  box-shadow: 0 8px 25px rgba(60, 40, 100, 0.08);
+}
+
+:root[data-theme="light"] .album-card:hover {
+  border-color: rgba(128, 84, 214, 0.5);
+
+  box-shadow:
+    0 15px 35px rgba(60, 40, 100, 0.12),
+    0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+:root[data-theme="light"] .album-card h3,
+:root[data-theme="light"] .album-card h4,
+:root[data-theme="light"] .album-card .card-title {
+  color: #29213d;
+}
+
+:root[data-theme="light"] .album-card .card-artist {
+  color: #77718c;
+}
+
+:root[data-theme="light"] .album-card .card-meta {
+  color: #8054d6;
+}
+
+/* Search */
+
+:root[data-theme="light"] .search {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(109, 75, 180, 0.2);
+}
+
+:root[data-theme="light"] .search input,
+:root[data-theme="light"] .search input[type="text"],
+:root[data-theme="light"] .search input[type="search"] {
+  color: #29213d;
+  background: #f4f1fc;
+}
+
+:root[data-theme="light"] .search input::placeholder {
+  color: #9189a6;
+}
+
+:root[data-theme="light"] .search input:focus {
+  background: #ffffff;
+}
+
+/* Other input fields */
+
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] select {
+  color: #29213d;
+}
+
+:root[data-theme="light"] select,
+:root[data-theme="light"] textarea {
+  background-color: #ffffff;
+  border-color: var(--border);
+}
+
+:root[data-theme="light"] input::placeholder,
+:root[data-theme="light"] textarea::placeholder {
+  color: #9189a6;
+}
+
+/* Collection filters */
+
+:root[data-theme="light"] .filters input[placeholder="Filter by title or artist"] {
+  color: #29213d;
+  background: #ffffff;
+  border-color: var(--border);
+}
+
+:root[data-theme="light"] .filters input[placeholder="Filter by title or artist"]:hover,
+:root[data-theme="light"] .filters input[placeholder="Filter by title or artist"]:focus {
+  background: #ffffff;
+}
+
+/* Album detail */
+
+:root[data-theme="light"] .detail-head {
+  background: linear-gradient(
+    120deg,
+    rgba(196, 181, 253, 0.22),
+    rgba(191, 219, 254, 0.25)
+  );
+}
+
+:root[data-theme="light"] .detail-artist {
+  color: #8054d6;
+}
+
+:root[data-theme="light"] .where {
+  color: #2585c5;
+}
+
+:root[data-theme="light"] .where a {
+  color: #6340a8;
+  background: rgba(196, 181, 253, 0.2);
+}
+
+:root[data-theme="light"] .where a:hover {
+  color: #51318f;
+  background: rgba(196, 181, 253, 0.4);
+}
+
+/* Collection tracker */
+
+:root[data-theme="light"] .tracker {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+:root[data-theme="light"] .chip {
+  color: #6e6684;
+  background: rgba(196, 181, 253, 0.15);
+}
+
+:root[data-theme="light"] .chip:hover {
+  color: #5632a0;
+}
+
+:root[data-theme="light"] .chip.on {
+  color: white;
+  background: var(--gradient);
+}
+
+/* Track list */
+
+:root[data-theme="light"] .track {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(109, 75, 180, 0.08);
+}
+
+:root[data-theme="light"] .track:hover {
+  background: rgba(196, 181, 253, 0.2);
+  border-color: var(--border);
+}
+
+:root[data-theme="light"] .track.active {
+  background: rgba(196, 181, 253, 0.3);
+  border-color: rgba(128, 84, 214, 0.35);
+}
+
+:root[data-theme="light"] .track-name {
+  color: #29213d;
+}
+
+:root[data-theme="light"] .track-time {
+  color: #77718c;
+}
+
+:root[data-theme="light"] .play-btn {
+  color: #6340a8;
+  background: rgba(196, 181, 253, 0.3);
+}
+
+/* Deezer callout */
+
+:root[data-theme="light"] .deezer-callout {
+  background: linear-gradient(
+    120deg,
+    rgba(125, 211, 252, 0.15),
+    rgba(196, 181, 253, 0.2)
+  );
+}
+
+/* Notices */
+
+:root[data-theme="light"] .notice {
+  color: #59447d;
+  background: rgba(196, 181, 253, 0.17);
+  border-color: rgba(128, 84, 214, 0.2);
+}
+
+:root[data-theme="light"] .error {
+  color: #be3455;
+  background: rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.25);
+}
+
+/* Mini player */
+
+:root[data-theme="light"] .player {
+  background: rgba(255, 255, 255, 0.92);
+
+  border-color: rgba(128, 84, 214, 0.25);
+
+  box-shadow:
+    0 15px 40px rgba(60, 40, 100, 0.15),
+    0 0 20px rgba(139, 92, 246, 0.08);
+}
+
+:root[data-theme="light"] .now strong {
+  color: #29213d;
+}
+
+:root[data-theme="light"] .now span {
+  color: #77718c;
+}
+
+:root[data-theme="light"] .controls button {
+  color: #6340a8;
+}
+
+:root[data-theme="light"] .controls button:hover:not(:disabled) {
+  color: #51318f;
+  background: rgba(196, 181, 253, 0.3);
+}
+
+/* Light theme toggle button */
+
+:root[data-theme="light"] .navbar .theme-toggle {
+  color: #6340a8;
+  background: rgba(196, 181, 253, 0.25);
+  border-color: rgba(128, 84, 214, 0.25);
+}
+
+:root[data-theme="light"] .navbar .theme-toggle:hover {
+  color: #51318f;
+  background: rgba(196, 181, 253, 0.45);
+}
+
+/* Smooth theme transition */
+
+body,
+.navbar,
+.album-card,
+.detail-head,
+.tracker,
+.track,
+.player,
+.search,
+input,
+textarea,
+select {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }

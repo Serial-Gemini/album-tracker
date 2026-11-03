@@ -1,156 +1,942 @@
+
+/* =========================================
+   ALBUM TRACKER — COSMIC THEME
+   File: src/index.css
+   ========================================= */
+
+/* 1. GLOBAL VARIABLES */
+
 :root {
-  --ink: #1b1a2e;
-  --surface: #27253f;
-  --raised: #34314f;
-  --text: #f2ede4;
-  --muted: #a9a4bd;
-  --label: #f2b84b;
-  --danger: #ff8a7a;
-  --radius: 10px;
-  --body: "DM Sans", system-ui, sans-serif;
-  --display: "Fraunces", Georgia, serif;
+  font-family: Inter, "Segoe UI", sans-serif;
+
+  color: #f4f0ff;
+  background: #080817;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  --bg: #080817;
+  --surface: #111126;
+  --surface-light: #191933;
+  --border: rgba(183, 157, 255, 0.15);
+
+  --text: #f4f0ff;
+  --muted: #9693b5;
+
+  --purple: #a78bfa;
+  --violet: #8b5cf6;
+  --blue: #38bdf8;
+  --pink: #ec4899;
+
+  --gradient: linear-gradient(
+    120deg,
+    #8b5cf6,
+    #6366f1,
+    #38bdf8
+  );
+
+  --glow: 0 0 25px rgba(139, 92, 246, 0.25);
 }
 
-*, *::before, *::after {
+/* 2. RESET AND PAGE BACKGROUND */
+
+* {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background: var(--ink);
+  min-width: 320px;
+  min-height: 100vh;
+
   color: var(--text);
-  font: 400 1rem/1.5 var(--body);
-  padding-bottom: 5.5rem;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 10%,
+      rgba(91, 33, 182, 0.20),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 85% 35%,
+      rgba(30, 64, 175, 0.16),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(126, 34, 206, 0.12),
+      transparent 45%
+    ),
+    var(--bg);
+
+  background-attachment: fixed;
+
+  overflow-x: hidden;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  opacity: 0.22;
+
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, white 50%, transparent),
+    radial-gradient(1px 1px at 30% 70%, white 50%, transparent),
+    radial-gradient(2px 2px at 60% 30%, white 50%, transparent),
+    radial-gradient(1px 1px at 80% 80%, white 50%, transparent),
+    radial-gradient(1px 1px at 90% 15%, white 50%, transparent),
+    radial-gradient(2px 2px at 45% 45%, white 50%, transparent);
+
+  background-size: 350px 350px;
+  animation: starDrift 60s linear infinite;
 }
 
-body {
-  margin: 0;
-  background: var(--ink);
-  color: var(--text);
-  font: 400 1rem/1.5 var(--body);
-  padding-bottom: 5.5rem;
+#root {
+  min-height: 100vh;
 }
 
-button:disabled {
-  cursor: not-allowed;
-  opacity: .4;
+::selection {
+  background: rgba(139, 92, 246, 0.55);
+  color: white;
 }
 
-:focus-visible {
-  outline: 2px solid var(--label);
-  outline-offset: 2px;
+/* 3. SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 9px;
 }
 
-[hidden] {
-  display: none !important;
+::-webkit-scrollbar-track {
+  background: #09091a;
 }
 
-.album-card:hover .disc,
-.album-card:focus-visible .disc {
-  transform: translateX(28%);
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    #8b5cf6,
+    #3b82f6
+  );
+  border-radius: 20px;
 }
 
-.album-card:hover img,
-.album-card:focus-visible img {
-  transform: translateX(-6%);
+::-webkit-scrollbar-thumb:hover {
+  background: #c4b5fd;
 }
+
+/* 4. NAVIGATION BAR */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+  padding: 18px 6%;
+
+  background: rgba(8, 8, 23, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar a,
+.navbar button {
+  color: var(--muted);
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.navbar a:hover,
+.navbar button:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.navbar a.active,
+.navbar button.active {
+  color: var(--purple);
+}
+
+/* 5. MAIN PAGE */
+
+.page {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  padding: 45px 0 120px;
+
+  animation: pageEnter 0.65s ease both;
+}
+
+.page-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+
+  margin-bottom: 12px;
+
+  background: linear-gradient(
+    110deg,
+    #ffffff,
+    #c4b5fd,
+    #60a5fa
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.page p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* 6. ALBUM GRID */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  gap: 1.75rem 1.25rem;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(175px, 1fr)
+  );
+
+  gap: 25px;
+  margin-top: 30px;
 }
 
-.album-card:hover .disc,
-.album-card:focus-visible .disc {
-  transform: translateX(28%);
+/* 7. ALBUM CARDS */
+
+.album-card {
+  position: relative;
+  overflow: hidden;
+
+  padding: 13px;
+
+  border-radius: 17px;
+  border: 1px solid var(--border);
+
+  background: linear-gradient(
+    145deg,
+    rgba(31, 27, 59, 0.90),
+    rgba(15, 15, 36, 0.95)
+  );
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.album-card:hover img,
-.album-card:focus-visible img {
-  transform: translateX(-6%);
+.album-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(167, 139, 250, 0.65);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(139, 92, 246, 0.20);
+}
+
+.album-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+
+  display: block;
+  border-radius: 11px;
+
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+.album-card:hover img {
+  transform: scale(1.045);
+  filter: brightness(1.12);
+}
+
+.album-card h3,
+.album-card h4 {
+  color: white;
+  margin: 13px 0 5px;
+}
+
+.album-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Album artwork decorative elements */
+
+.sleeve {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.disc {
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #312e81,
+    #8b5cf6,
+    #38bdf8,
+    #312e81
+  );
+
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+/* 8. SEARCH */
+
+.search {
+  width: 100%;
+  max-width: 650px;
+
+  padding: 16px 20px;
+
+  color: white;
+  background: rgba(22, 22, 49, 0.85);
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  outline: none;
+
+  font-size: 1rem;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.search::placeholder {
+  color: #777493;
+}
+
+.search:focus {
+  border-color: var(--purple);
+
+  background: rgba(28, 25, 60, 0.95);
+
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, 0.12),
+    0 0 25px rgba(139, 92, 246, 0.18);
+}
+
+/* General form controls */
+
+input,
+textarea,
+select {
+  color: var(--text);
+  font: inherit;
+}
+
+input:not([type="range"]),
+textarea,
+select {
+  accent-color: var(--purple);
+}
+
+select,
+textarea {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px;
+  outline: none;
+}
+
+select:focus,
+textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.18);
+}
+
+/* 9. BUTTONS */
+
+button,
+.primary,
+.link-btn,
+.btn-link {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.primary,
+.link-btn,
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 19px;
+
+  color: white;
+  text-decoration: none;
+
+  border: 1px solid transparent;
+  border-radius: 11px;
+
+  background: var(--gradient);
+  background-size: 200% 200%;
+
+  box-shadow: 0 5px 20px rgba(99, 102, 241, 0.20);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-position 0.4s ease,
+    filter 0.25s ease;
+}
+
+.primary:hover,
+.link-btn:hover,
+.btn-link:hover {
+  transform: translateY(-3px);
+
+  background-position: 100% 50%;
+
+  box-shadow:
+    0 8px 25px rgba(139, 92, 246, 0.35),
+    0 0 18px rgba(56, 189, 248, 0.15);
+
+  filter: brightness(1.12);
+}
+
+.primary:active,
+.link-btn:active,
+.btn-link:active {
+  transform: scale(0.96);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.danger {
+  color: #fda4af;
+  border-color: rgba(244, 63, 94, 0.25);
+}
+
+.danger:hover {
+  background: rgba(190, 18, 60, 0.18);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+}
+
+/* 10. NOTICES AND ERRORS */
+
+.notice,
+.error {
+  padding: 15px 18px;
+  margin: 18px 0;
+
+  border-radius: 12px;
+
+  background: rgba(139, 92, 246, 0.10);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+
+  color: #ddd6fe;
+}
+
+.error {
+  background: rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.30);
+  color: #fda4af;
+}
+
+/* 11. ALBUM DETAILS */
+
+.detail-head {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  margin: 25px 0 35px;
+  padding: 25px;
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  background: linear-gradient(
+    120deg,
+    rgba(91, 33, 182, 0.15),
+    rgba(30, 41, 90, 0.22)
+  );
+
+  backdrop-filter: blur(15px);
+}
+
+.detail-head img {
+  width: 200px;
+  max-width: 40%;
+  border-radius: 15px;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.detail-artist {
+  color: var(--purple);
+  font-size: 1.05rem;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.where {
+  color: var(--blue);
+  font-size: 0.9rem;
+}
+
+/* 12. COLLECTION AND TRACKING */
+
+.tracker {
+  padding: 20px;
+
+  background: rgba(19, 19, 44, 0.85);
+
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin: 18px 0;
+}
+
+.chip {
+  padding: 8px 15px;
+
+  color: var(--muted);
+
+  background: rgba(139, 92, 246, 0.08);
+
+  border: 1px solid var(--border);
+  border-radius: 30px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.chip:hover {
+  color: white;
+  border-color: var(--purple);
+  transform: translateY(-2px);
 }
 
 .chip.on {
-  background: var(--label);
-  color: var(--ink);
-  border-color: var(--label);
-  font-weight: 700;
+  color: white;
+
+  background: var(--gradient);
+  border-color: transparent;
+
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.25);
 }
 
-.star.on {
-  color: var(--label);
+/* 13. RATINGS */
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.star {
+  color: #55516f;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.star:hover {
+  color: #fbbf24;
+  transform: scale(1.25);
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
+}
+
+/* 14. TRACK LIST */
+
+.tracks {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
 }
 
 .track {
-  display: grid;
-  grid-template-columns: 2.5rem 1fr auto;
+  display: flex;
   align-items: center;
-  gap: .75rem;
+  gap: 15px;
+
+  padding: 13px 15px;
+  margin-bottom: 7px;
+
+  background: rgba(20, 20, 45, 0.65);
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
-.player {
-  position: fixed;
-  inset: auto 0 0 0;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto minmax(80px, 240px);
-  align-items: center;
+.track:hover {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: var(--border);
+  transform: translateX(4px);
 }
 
-@media (max-width: 640px) {
-  .detail-head {
-    grid-template-columns: 1fr;
-  }
-
-  .player {
-    grid-template-columns: auto 1fr auto;
-  }
-
-  .seek {
-    grid-column: 1 / -1;
-  }
+.track.active {
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(167, 139, 250, 0.45);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-  }
+.play-btn {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+
+  color: white;
+  background: rgba(139, 92, 246, 0.20);
+
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 50%;
+
+  transition: all 0.25s ease;
 }
+
+.play-btn:hover:not(:disabled) {
+  background: var(--gradient);
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.45);
+  transform: scale(1.12);
+}
+
+.track-name {
+  flex: 1;
+  color: var(--text);
+}
+
+.track-time {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* 15. DEEZER CALLOUT */
 
 .deezer-callout {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem 1rem;
-  background: var(--surface);
-  border: 1px solid var(--raised);
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
-}
+  padding: 20px;
 
-.deezer-callout p {
-  margin: 0;
-  max-width: 46ch;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 15px;
+
+  background: linear-gradient(
+    120deg,
+    rgba(56, 189, 248, 0.09),
+    rgba(139, 92, 246, 0.12)
+  );
 }
 
 .callout-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 12px;
+  margin-top: 15px;
 }
 
-.btn-link {
-  display: inline-block;
-  text-decoration: none;
-  background: var(--raised);
-  color: var(--text);
-  border-radius: var(--radius);
-  padding: 0.65rem 1.1rem;
-  font-weight: 700;
+/* 16. FLOATING MUSIC PLAYER */
+
+.player {
+  position: fixed;
+  z-index: 200;
+
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(950px, 94%);
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 13px 20px;
+
+  background: rgba(17, 16, 42, 0.88);
+
+  border: 1px solid rgba(167, 139, 250, 0.30);
+  border-radius: 18px;
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.55),
+    0 0 25px rgba(139, 92, 246, 0.12);
+
+  animation: playerEnter 0.5s ease both;
+}
+
+.player img {
+  width: 55px;
+  height: 55px;
+
+  object-fit: cover;
+  border-radius: 9px;
+
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.25);
+}
+
+.now {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  min-width: 0;
+  flex: 1;
+}
+
+.now strong {
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.now span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.controls button {
+  color: #d8d4ed;
+  background: transparent;
+
+  border: none;
+  border-radius: 50%;
+
+  width: 38px;
+  height: 38px;
+
+  transition: all 0.2s ease;
+}
+
+.controls button:hover:not(:disabled) {
+  color: white;
+  background: rgba(139, 92, 246, 0.2);
+  transform: scale(1.12);
+}
+
+.controls .main {
+  width: 45px;
+  height: 45px;
+
+  color: white;
+  background: var(--gradient);
+
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
+}
+
+.controls .main:hover {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.65);
+  transform: scale(1.1);
+}
+
+/* Music progress bar */
+
+.seek {
+  width: 140px;
+  height: 5px;
+
+  accent-color: var(--purple);
+  cursor: pointer;
+}
+
+/* 17. GENERAL HOVER POLISH */
+
+img {
+  max-width: 100%;
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--blue);
+}
+
+/* 18. ANIMATIONS */
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes playerEnter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes starDrift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 350px 350px;
+  }
+}
+
+/* 19. RESPONSIVE DESIGN */
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 14px 5%;
+    flex-wrap: wrap;
+  }
+
+  .page {
+    width: 92%;
+    padding-top: 30px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+    gap: 14px;
+  }
+
+  .album-card {
+    padding: 9px;
+  }
+
+  .detail-head {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px;
+  }
+
+  .detail-head img {
+    max-width: 100%;
+    width: 170px;
+  }
+
+  .player {
+    bottom: 8px;
+    width: 96%;
+    gap: 9px;
+    padding: 10px;
+  }
+
+  .player img {
+    width: 43px;
+    height: 43px;
+  }
+
+  .controls {
+    gap: 3px;
+  }
+
+  .controls button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .controls .main {
+    width: 38px;
+    height: 38px;
+  }
+
+  .seek {
+    width: 65px;
+  }
+
+  .track {
+    gap: 9px;
+    padding: 10px;
+  }
+}
+
+/* 20. ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

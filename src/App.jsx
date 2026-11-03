@@ -1,9 +1,11 @@
+
 import { useState } from "react";
 import Navbar from "./components/Navbar.jsx";
 import Player from "./components/Player.jsx";
 import Discover from "./pages/Discover.jsx";
 import AlbumDetail from "./pages/AlbumDetail.jsx";
 import Collection from "./pages/Collection.jsx";
+import AiPicks from "./pages/AiPicks.jsx";
 
 export default function App() {
   const [page, setPage] = useState("discover");
@@ -17,6 +19,7 @@ export default function App() {
   return (
     <>
       <Navbar page={page} setPage={setPage} />
+
       <main>
         {/* Discover stays mounted so your search results survive navigation */}
         <div hidden={page !== "discover"}>
@@ -24,11 +27,21 @@ export default function App() {
         </div>
 
         {page === "album" && (
-          <AlbumDetail albumId={albumId} back={() => setPage("discover")} />
+          <AlbumDetail
+            albumId={albumId}
+            back={() => setPage("discover")}
+          />
         )}
 
-        {page === "collection" && <Collection openAlbum={openAlbum} />}
+        {page === "collection" && (
+          <Collection openAlbum={openAlbum} />
+        )}
+
+        {page === "ai-picks" && (
+          <AiPicks openAlbum={openAlbum} />
+        )}
       </main>
+
       <Player />
     </>
   );

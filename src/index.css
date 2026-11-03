@@ -1550,3 +1550,10 @@ a:hover {
   margin-top: 2px;
   line-height: 1.4;
 }
+
+/* NAVIGATION BUTTON SPACING */
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

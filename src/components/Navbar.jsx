@@ -15,7 +15,7 @@ export default function Navbar({ page, setPage }) {
 
   return (
     <header className="navbar">
-      <h1 className="logo">Album Tracker</h1>
+      <h1 className="logo">Gem Music</h1>
       <nav>
         {tab("discover", "Discover")}
         {tab("collection", `My collection (${count})`)}

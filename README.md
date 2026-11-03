@@ -10,7 +10,8 @@ Live Website - https://gemini-albumtracker.vercel.app/
 Github Repo - https://github.com/Serial-Gemini/album-tracker
 ![Search results screenshot](./searchresults.png)
 ![Album detail screenshot](./albumdetailss.png)
-- Recommendations screenshot: `screenshots/recommendations.png`
+![Recommendations Loading screenshot](./recommendationsloading.png)
+![Recommendations Loaded screenshot](./recommendationsloaded.png)
 
 ## Features
 
